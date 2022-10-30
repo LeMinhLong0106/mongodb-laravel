@@ -90,6 +90,7 @@
                             <div class="card-body">
                                 <ul class="list-item">
                                     <li class="list-group-item"><a href="{{ route('authors.index') }}">Authors</a></li>
+                                    <li class="list-group-item"><a href="{{ route('books.index') }}">Books</a></li>
                                 </ul>
                             </div>
                         </div>
