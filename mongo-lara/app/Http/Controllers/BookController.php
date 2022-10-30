@@ -40,19 +40,21 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'pages' => 'required',
-            'author_id' => 'required'
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'price' => 'required',
+        //     'pages' => 'required',
+        //     'image' => 'required',
+        //     'author_id' => 'required'
+        // ]);
 
-        Book::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'pages' => $request->pages,
-            'author_id' => $request->author_id,
-        ]);
+        $requestData = $request->all();
+        $fileName = time() . $request->file('image')->getClientoriginalName();
+        $path = $request->file('image')->storeAs('uploads', $fileName, 'public');
+        $requestData['image'] = '/storage/' . $path;
+
+        Book::create($requestData);
+
         return redirect()->route('books.index');
     }
 
@@ -88,19 +90,26 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'pages' => 'required',
-            'author_id' => 'required'
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'price' => 'required',
+        //     'pages' => 'required',
+        //     'author_id' => 'required'
+        // ]);
+
+        $requestData = $request->all();
+        $fileName = time() . $request->file('image')->getClientoriginalName();
+        $path = $request->file('image')->storeAs('uploads', $fileName, 'public');
+        $requestData['image'] = '/storage/' . $path;
 
         $book->update([
             'name' => $request->name,
             'price' => $request->price,
             'pages' => $request->pages,
+            'image' => '/storage/' . $path,
             'author_id' => $request->author_id,
         ]);
+
         return redirect()->route('books.index');
     }
 

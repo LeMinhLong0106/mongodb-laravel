@@ -6,7 +6,7 @@
             <div class="card-header">{{ __('Edit Book') }}</div>
 
             <div class="card-body">
-                <form action="{{ route('books.update', [$book]) }}" method="POST">
+                <form action="{{ route('books.update', [$book]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
@@ -20,6 +20,10 @@
                     <div class="form-group">
                         <label for="pages">Pages</label>
                         <input type="text" name="pages" value="{{ $book->pages }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input type="file" name="image" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="author_id">Author</label>

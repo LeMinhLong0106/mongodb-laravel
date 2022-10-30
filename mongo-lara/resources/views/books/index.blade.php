@@ -14,6 +14,7 @@
                     <table class="table">
                         <tr>
                             <th>Name</th>
+                            <th>Image</th>
                             <th>Price</th>
                             <th>Pages</th>
                             <th>Author name</th>
@@ -22,6 +23,7 @@
                         @forelse($books as $item)
                             <tr>
                                 <td>{{ $item->name }}</td>
+                                <td><img src="{{ asset($item->image) }}" width="50" height="50" alt=""></td>
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->pages }}</td>
                                 <td>{{ optional($item->author)->name }}</td>

@@ -1,0 +1,4 @@
+https://www.youtube.com/watch?v=XKwwhuop6yg&list=PLGsHwf2MeBOhPJc0ViKQ_dhXmivROADM9
+
+image
+php artisan storage:link

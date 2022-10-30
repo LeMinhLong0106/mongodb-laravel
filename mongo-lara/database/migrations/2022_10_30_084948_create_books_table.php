@@ -16,6 +16,7 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->foreignId('author_id')->constrained()->cascadeOnDelete();
             $table->string('name');
+            $table->string('image');
             $table->bigInteger('pages');
             $table->bigInteger('price');
             $table->timestamps();
